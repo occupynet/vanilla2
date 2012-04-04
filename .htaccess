@@ -1,0 +1,24 @@
+# Modified
+# If you modify this file then change the above line to: # Modified
+<IfModule mod_rewrite.c>
+   RewriteEngine On
+   # Certain hosts may require the following line.
+   # If vanilla is in a subfolder then you need to specify it after the /. 
+   # (ex. You put Vanilla in /forum so change the next line to: RewriteBase /forum)
+   #RewriteBase /forum
+
+   RewriteRule ^/?(interoccupy)/?(.*)$ $2?site=$1 [QSA,NE]
+   RewriteRule ^/?(iocaucuses)/?(.*)$ $2?site=$1 [QSA,NE]
+   RewriteRule ^/?(occupyatlanta)/?(.*)$ $2?site=$1 [QSA,NE]
+   RewriteRule ^/?(occupyfarms)/?(.*)$ $2?site=$1 [QSA,NE]
+   RewriteRule ^/?(techsupport)/?(.*)$ $2?site=$1 [QSA,NE]
+
+   #RewriteMap lowercase int:tolower
+   # Above line added to vhost config file
+   # Allows /OccupyAtlanta to match occupyatlanta properly
+
+#   RewriteCond %{REQUEST_FILENAME} !-d
+#   RewriteCond %{REQUEST_FILENAME} !-f
+#   RewriteRule ^(.*)$ /index\.php\?p=/categories/${lowercase:$1}
+
+</IfModule>
